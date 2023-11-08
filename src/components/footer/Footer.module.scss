@@ -1,0 +1,31 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  height: 50px;
+  background-color: #203000;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  .button {
+    color: #6ba002;
+    width: 100%;
+    height: 100%;
+    background-color: #203000;
+    border: none;
+    padding: 10px;
+    display: inline-block;
+    font-size: 20px;
+    margin: 10px;
+    transition: background-color 0.2s;
+    &:hover {
+      background-color: #304010;
+    }
+    &:active {
+      background-color: #66940a;
+    }
+
+    cursor: pointer;
+  }
+}
