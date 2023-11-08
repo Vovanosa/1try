@@ -15,7 +15,6 @@ const Card: FunctionComponent<CardProps> = (props) => {
   };
 
   return (
-
     <div className={styles.card}>
       <div className={styles.controls}>
         <i className={styles.i}>share</i>
