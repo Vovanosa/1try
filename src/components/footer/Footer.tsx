@@ -1,32 +1,27 @@
 /* eslint-disable react/button-has-type */
 import {
-  FunctionComponent, HTMLProps, useEffect, useState,
+  FunctionComponent, HTMLProps, useEffect,
 } from 'react';
 import styles from './Footer.module.scss';
 
 interface FooterProps extends HTMLProps<HTMLButtonElement> {
   footerButtons: string[]
+  handleClick: (name: string) => void
 }
 
 const Footer: FunctionComponent<FooterProps> = (props) => {
-  const { footerButtons } = props;
-  const [log, setLog] = useState('');
+  const { footerButtons, handleClick } = props;
 
   useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log(log);
-  });
 
-  const handleClick = (index: number) => {
-    setLog(footerButtons[index]);
-  };
+  });
 
   return (
     <div className={styles.footer}>
-      {footerButtons.map((name, index) => (
+      {footerButtons.map((name) => (
         <button
           className={styles.button}
-          onClick={() => { handleClick(index); }}
+          onClick={() => { handleClick(name); }}
         >
           {name}
         </button>

@@ -5,21 +5,27 @@ import Button from '../ui-kit/button/Button';
 
 interface ProductProps {
   productText: string
+  cardMainPicture: string
+  handleClick: (name: string) => void
+  itemClick: (name: string) => void
 }
 
 const pics = ['https://res.cloudinary.com/john-mantas/image/upload/v1537302064/codepen/delicious-apples/green-apple2.png', 'https://res.cloudinary.com/john-mantas/image/upload/v1537303532/codepen/delicious-apples/half-apple.png', 'https://res.cloudinary.com/john-mantas/image/upload/v1537303160/codepen/delicious-apples/green-apple-flipped.png', 'https://res.cloudinary.com/john-mantas/image/upload/v1537303708/codepen/delicious-apples/apple-top.png'];
 
 const Product: FunctionComponent<ProductProps> = (props) => {
-  const { productText } = props;
+  const {
+    productText, cardMainPicture, itemClick, handleClick,
+  } = props;
 
   return (
     <p>
       <div className={styles.mainmenu}>
         <div className={styles.card}>
           <Card
-            cardMainPicture='https://res.cloudinary.com/john-mantas/image/upload/v1537291846/codepen/delicious-apples/green-apple-with-slice.png'
+            cardMainPicture={cardMainPicture}
             cardAlt={productText}
             cardAlbumPictures={pics}
+            itemClick={itemClick}
           />
 
         </div>
@@ -72,7 +78,10 @@ const Product: FunctionComponent<ProductProps> = (props) => {
               <li>They&apos;re linked to a lowest risk of diabetes</li>
             </ul>
           </div>
-          <Button buttonText='ADD TO CART' />
+          <Button
+            buttonText='ADD TO CART'
+            handleClick={handleClick}
+          />
         </div>
 
       </div>

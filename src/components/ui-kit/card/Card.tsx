@@ -1,18 +1,17 @@
-import { FunctionComponent, useState } from 'react';
+import { FunctionComponent } from 'react';
 import styles from './Card.module.scss';
 
 interface CardProps {
   cardMainPicture: string
   cardAlt: string
   cardAlbumPictures: string[]
+  itemClick: (name: string) => void
 }
 
 const Card: FunctionComponent<CardProps> = (props) => {
-  const { cardMainPicture, cardAlt, cardAlbumPictures } = props;
-  const [mainpic, setMainpic] = useState(cardMainPicture);
-  const handleClick = (index: number) => {
-    setMainpic(cardAlbumPictures[index]);
-  };
+  const {
+    cardMainPicture, cardAlt, cardAlbumPictures, itemClick,
+  } = props;
 
   return (
     <div className={styles.card}>
@@ -22,7 +21,7 @@ const Card: FunctionComponent<CardProps> = (props) => {
       </div>
       <img
         className={styles.picture}
-        src={mainpic}
+        src={cardMainPicture}
         alt={cardAlt}
       />
       <div className={styles.album}>
@@ -34,7 +33,7 @@ const Card: FunctionComponent<CardProps> = (props) => {
                 key={picture}
                 src={picture}
                 alt={index.toString()}
-                onClick={() => handleClick(index)}
+                onClick={() => itemClick(index.toString())}
               />
             </li>
           ))}

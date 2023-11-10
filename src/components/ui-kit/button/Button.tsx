@@ -1,26 +1,22 @@
-import { FunctionComponent, useState } from 'react';
+import { FunctionComponent } from 'react';
 import styles from './Button.module.scss';
 
 interface ButtonProps {
   buttonText: string
+  handleClick: (name: string) => void
 }
 
 const Button: FunctionComponent<ButtonProps> = (props) => {
-  const { buttonText } = props;
-  const [buttonTextreal, SetButtonTextreal] = useState(buttonText);
-  const handleClick = () => {
-    if (buttonTextreal === buttonText) SetButtonTextreal('New Text');
-    else SetButtonTextreal(buttonText);
-  };
+  const { buttonText, handleClick } = props;
 
   return (
     <p>
       {/* eslint-disable-next-line react/button-has-type */}
       <button
         className={styles.button}
-        onClick={handleClick}
+        onClick={() => { handleClick(buttonText); }}
       >
-        {buttonTextreal}
+        {buttonText}
       </button>
     </p>
   );
