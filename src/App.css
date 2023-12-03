@@ -4,7 +4,6 @@
 
 html,
 body {
-  height: 100%;
 }
 
 body {
@@ -13,7 +12,11 @@ body {
   font-family: 'Raleway', sans-serif;
   background-color: #01e37f;
 }
-
+.products_list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 5em 0em 3em 0em;
+}
 h3 {
   font-size: 0.7em;
   letter-spacing: 1.2px;
@@ -25,9 +28,6 @@ img {
   filter: drop-shadow(1px 1px 3px #a6a6a6);
 }
 
-.Added {
-  font-size: 1em;
-  letter-spacing: 2px;
-  color: rgb(235, 235, 235);
-  text-align: center;
+.cart {
+  margin: 5em;
 }

@@ -5,12 +5,11 @@ interface CardProps {
   cardMainPicture: string
   cardAlt: string
   cardAlbumPictures: string[]
-  itemClick: (name: string) => void
 }
 
 const Card: FunctionComponent<CardProps> = (props) => {
   const {
-    cardMainPicture, cardAlt, cardAlbumPictures, itemClick,
+    cardMainPicture, cardAlt, cardAlbumPictures,
   } = props;
 
   return (
@@ -33,7 +32,6 @@ const Card: FunctionComponent<CardProps> = (props) => {
                 key={picture}
                 src={picture}
                 alt={index.toString()}
-                onClick={() => itemClick(index.toString())}
               />
             </li>
           ))}

@@ -6,13 +6,13 @@ $color-highlight: #ff3f40;
   position: relative;
   padding: 1.5em 3.1em;
   border: none;
-  border-radius: 7px;
+  border-radius: 0.5em;
   font-size: 0.8em;
   font-weight: 700;
   letter-spacing: 1.3px;
   color: #fff;
   background-color: $color-highlight;
-  box-shadow: 2px 2px 25px -7px $color-primary;
+  box-shadow: 0.1em 0.1em 2em -0.4em $color-primary;
   cursor: pointer;
 
   &:active {

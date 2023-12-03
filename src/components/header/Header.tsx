@@ -6,13 +6,11 @@ interface HeaderProps {
   headerText: string
   headerButtons: string[]
   logo: string
-  handleClick: (name: string) => void
-  logoClick: () => void
 }
 
 const Header: FunctionComponent<HeaderProps> = (props) => {
   const {
-    headerText, headerButtons, logo, handleClick, logoClick,
+    headerText, headerButtons, logo,
   } = props;
 
   return (
@@ -21,7 +19,6 @@ const Header: FunctionComponent<HeaderProps> = (props) => {
       {headerButtons.map((name) => (
         <button
           className={styles.button}
-          onClick={() => { handleClick(name); }}
         >
           {name}
         </button>
@@ -32,7 +29,6 @@ const Header: FunctionComponent<HeaderProps> = (props) => {
         src={logo}
         alt='Logo of company'
         className={styles.logo}
-        onClick={() => { logoClick(); }}
       />
     </div>
 

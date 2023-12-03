@@ -6,11 +6,10 @@ import styles from './Footer.module.scss';
 
 interface FooterProps extends HTMLProps<HTMLButtonElement> {
   footerButtons: string[]
-  handleClick: (name: string) => void
 }
 
 const Footer: FunctionComponent<FooterProps> = (props) => {
-  const { footerButtons, handleClick } = props;
+  const { footerButtons } = props;
 
   useEffect(() => {
 
@@ -21,7 +20,6 @@ const Footer: FunctionComponent<FooterProps> = (props) => {
       {footerButtons.map((name) => (
         <button
           className={styles.button}
-          onClick={() => { handleClick(name); }}
         >
           {name}
         </button>

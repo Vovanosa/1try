@@ -1,71 +1,84 @@
-/* eslint-disable no-console */
 import React, { useState } from 'react';
 import './App.css';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Product from './components/product';
 import Header from './components/header';
 import Footer from './components/footer';
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [countpic, setCountpic] = useState(0);
-  const [showMessage, setShowMessage] = useState(false);
-  const [headerSections, setHeaderSections] = useState(['Products', 'About us', 'Your products']);
-  const handleClick = (name: string) => {
-    setCount(count + 1);
-    console.log(count, name);
+  const headerSections = ['Products', 'About us', 'Your products'];
+  const footerSections = ['About us', 'Contacts', 'Footer3', 'Footer4'];
+  const [cartItems, setCartItems] = useState(['']);
+  const handleClick = (productName: string) => {
+    if (cartItems[0] === '') {
+      setCartItems([productName]);
+    } else if (!cartItems.includes(productName)) setCartItems([...cartItems, productName]);
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+    // eslint-disable-next-line no-console
+    console.log(cartItems, [productName]);
   };
-
-  const itemClick = (picture: string) => {
-    setCountpic(countpic + 1);
-    console.log(countpic, picture);
-  };
-
-  const logoClick = () => {
-    // eslint-disable-next-line no-alert
-    const textForNewHeader = prompt('Введіть назву нової кнопки Header\'a');
-    const validTextForNewHeader = textForNewHeader !== null ? textForNewHeader : '';
-    if (headerSections.includes(validTextForNewHeader)) {
-      setHeaderSections(headerSections.filter(item => item !== textForNewHeader));
-    } else {
-      setHeaderSections([...headerSections, validTextForNewHeader]);
-    }
-    console.log(headerSections.length, textForNewHeader);
-  };
-
-  const addToCartMessage = () => {
-    setShowMessage(true);
-    setTimeout(() => {
-      setShowMessage(false);
-    }, 1000);
-  };
-
-  const handleClickBoth = () => {
-    addToCartMessage();
-    handleClick;
-  };
+  const cartItemString: string | null = localStorage.getItem('cart');
 
   return (
-    <div className='App'>
-      <Header
-        headerText='Fruit shop'
-        headerButtons={headerSections}
-        logo='https://images.squarespace-cdn.com/content/v1/575a6067b654f9b902f452f4/1552683653140-0UUVQSSUEWVC73AWAEQG/300Logo.png?format=2500w'
-        handleClick={handleClick}
-        logoClick={logoClick}
-      />
-      <Product
-        productText='apple'
-        cardMainPicture='https://res.cloudinary.com/john-mantas/image/upload/v1537291846/codepen/delicious-apples/green-apple-with-slice.png'
-        handleClick={handleClickBoth}
-        itemClick={itemClick}
-      />
-      {showMessage && <div className='Added'>Added to cart</div>}
+    <Router>
+      <div className='App'>
 
-      <Footer
-        footerButtons={['About us', 'Contacts', 'Footer3', 'Footer4']}
-        handleClick={handleClick}
-      />
-    </div>
+        <Header
+          headerText='Fruit shop'
+          headerButtons={headerSections}
+          logo='https://images.squarespace-cdn.com/content/v1/575a6067b654f9b902f452f4/1552683653140-0UUVQSSUEWVC73AWAEQG/300Logo.png?format=2500w'
+        />
+        <Switch>
+          <Route
+            exact
+            path='/'
+          >
+            <div className='products_list'>
+              <Product
+                productName='Delicious Apples'
+                productText='apple'
+                cardMainPicture='https://res.cloudinary.com/john-mantas/image/upload/v1537291846/codepen/delicious-apples/green-apple-with-slice.png'
+                handleClick={() => { handleClick('Delicious Apples'); }}
+              />
+              <Product
+                productName='Delicious Bananas'
+                productText='banana'
+                cardMainPicture='https://res.cloudinary.com/john-mantas/image/upload/v1537291846/codepen/delicious-apples/green-apple-with-slice.png'
+                handleClick={() => { handleClick('Delicious Bananas'); }}
+              />
+              <Product
+                productName='Delicious Grapes'
+                productText='grape'
+                cardMainPicture='https://res.cloudinary.com/john-mantas/image/upload/v1537291846/codepen/delicious-apples/green-apple-with-slice.png'
+                handleClick={() => { handleClick('Delicious Grapes'); }}
+              />
+              <Product
+                productName='Delicious Oranges'
+                productText='orange'
+                cardMainPicture='https://res.cloudinary.com/john-mantas/image/upload/v1537291846/codepen/delicious-apples/green-apple-with-slice.png'
+                handleClick={() => { handleClick('Delicious Oranges'); }}
+              />
+              <Product
+                productName='Delicious Peaches'
+                productText='peach'
+                cardMainPicture='https://res.cloudinary.com/john-mantas/image/upload/v1537291846/codepen/delicious-apples/green-apple-with-slice.png'
+                handleClick={() => { handleClick('Delicious Peaches'); }}
+              />
+            </div>
+          </Route>
+          <Route path='/cart'>
+            <div className='cart'>
+              { cartItemString !== null ? JSON.parse(cartItemString) : null}
+            </div>
+          </Route>
+        </Switch>
+        <Footer
+          footerButtons={footerSections}
+        />
+
+      </div>
+    </Router>
   );
 }
 

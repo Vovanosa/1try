@@ -4,7 +4,7 @@
   left: 0;
   z-index: 1;
   width: 100%;
-  height: 100px;
+  height: 4em;
   text-align: start;
   background-color: #9be010;
   color: #f4ffdf;
@@ -12,18 +12,17 @@
   display: flex;
   justify-content: space-between;
   h1 {
-    padding: 30px;
+    padding: 2em;
   }
   .button {
     color: #314606;
     flex: 1;
     background-color: #9be010;
     border: none;
-    padding: 10px;
     height: 100%;
     text-align: center;
     display: inline-block;
-    font-size: 24px;
+    font-size: 2em;
     transition: background-color 0.2s;
     &:hover {
       background-color: #8bd000;
@@ -35,7 +34,7 @@
     cursor: pointer;
   }
   .logo {
-    right: 20px;
-    width: 100px;
+    right: 2em;
+    width: 5em;
   }
 }

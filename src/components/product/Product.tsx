@@ -1,21 +1,31 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useState } from 'react';
 import styles from './Product.module.scss';
 import Card from '../ui-kit/card';
 import Button from '../ui-kit/button/Button';
 
 interface ProductProps {
+  productName: string
   productText: string
   cardMainPicture: string
   handleClick: (name: string) => void
-  itemClick: (name: string) => void
 }
 
 const pics = ['https://res.cloudinary.com/john-mantas/image/upload/v1537302064/codepen/delicious-apples/green-apple2.png', 'https://res.cloudinary.com/john-mantas/image/upload/v1537303532/codepen/delicious-apples/half-apple.png', 'https://res.cloudinary.com/john-mantas/image/upload/v1537303160/codepen/delicious-apples/green-apple-flipped.png', 'https://res.cloudinary.com/john-mantas/image/upload/v1537303708/codepen/delicious-apples/apple-top.png'];
 
 const Product: FunctionComponent<ProductProps> = (props) => {
   const {
-    productText, cardMainPicture, itemClick, handleClick,
+    productName, productText, cardMainPicture, handleClick,
   } = props;
+
+  const [buttonName, setButtonName] = useState('Add to Cart');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const addToCartMessage = () => {
+    setButtonName('ADDED TO CART');
+    handleClick(productName);
+    setTimeout(() => {
+      setButtonName('Add to Cart');
+    }, 1000);
+  };
 
   return (
     <p>
@@ -25,14 +35,13 @@ const Product: FunctionComponent<ProductProps> = (props) => {
             cardMainPicture={cardMainPicture}
             cardAlt={productText}
             cardAlbumPictures={pics}
-            itemClick={itemClick}
           />
 
         </div>
 
         <div className={styles.text}>
           <div className={styles.header}>
-            <h1>Delicious Apples</h1>
+            <h1>{productName}</h1>
             <span>COD: 1488</span>
           </div>
           <div className={styles.price}>
@@ -79,8 +88,8 @@ const Product: FunctionComponent<ProductProps> = (props) => {
             </ul>
           </div>
           <Button
-            buttonText='ADD TO CART'
-            handleClick={handleClick}
+            buttonText={buttonName}
+            handleClick={addToCartMessage}
           />
         </div>
 

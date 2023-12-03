@@ -3,7 +3,7 @@
   bottom: 0;
   z-index: 1;
   width: 100%;
-  height: 50px;
+  height: 2.5em;
   background-color: #203000;
   align-items: center;
   justify-content: center;
@@ -14,10 +14,9 @@
     height: 100%;
     background-color: #203000;
     border: none;
-    padding: 10px;
     display: inline-block;
-    font-size: 20px;
-    margin: 10px;
+    font-size: 1.5em;
+    margin: 1em;
     transition: background-color 0.2s;
     &:hover {
       background-color: #304010;
