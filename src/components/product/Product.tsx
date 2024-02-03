@@ -20,8 +20,8 @@ const Product: FunctionComponent<ProductProps> = (props) => {
   const [buttonName, setButtonName] = useState('Add to Cart');
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const addToCartMessage = () => {
-    setButtonName('ADDED TO CART');
     handleClick(productName);
+    setButtonName('ADDED TO CART');
     setTimeout(() => {
       setButtonName('Add to Cart');
     }, 1000);

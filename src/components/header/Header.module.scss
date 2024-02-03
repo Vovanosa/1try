@@ -11,6 +11,10 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
+
+  Link {
+    text-decoration: none;
+  }
   h1 {
     padding: 2em;
   }

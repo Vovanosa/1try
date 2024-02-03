@@ -28,6 +28,29 @@ img {
   filter: drop-shadow(1px 1px 3px #a6a6a6);
 }
 
-.cart {
+.your_products {
+  margin: 5em;
+}
+
+.main_page {
+  .welcome_text {
+    font-size: 3em;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+  }
+}
+.about_us {
+  font-size: 3em;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.loader {
   margin: 5em;
 }
